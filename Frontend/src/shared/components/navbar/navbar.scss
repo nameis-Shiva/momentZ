@@ -1,0 +1,139 @@
+/* =========================
+   Glass Morphism Navbar
+========================= */
+
+$glass-bg: rgba(255, 255, 255, 0.08);
+$glass-border: rgba(255, 255, 255, 0.18);
+$accent-color-start: #f43f5e;
+$accent-color-end: #8b5cf6;
+$text-color: #ffffff;
+
+body {
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  min-height: 100vh;
+}
+
+/* Navbar (Left Side)*/
+
+.navbar {
+  position: fixed;
+  top: 50%;
+  left: 1rem;
+  transform: translateY(-50%);
+  padding: 1.2rem 0.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  z-index: 1000;
+
+  /* Glass Effect */
+  background: $glass-bg;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid $glass-border;
+  border-radius: 1.5rem;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.35),
+    inset 0 0 0.5px rgba(255, 255, 255, 0.4);
+
+  .nav-item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    position: relative;
+    padding: 0.75rem 1rem;
+    color: $text-color;
+    text-decoration: none;
+    font-weight: 500;
+    border-radius: 1rem;
+    transition: all 0.3s ease;
+
+    .icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      min-width: 2.5rem;
+    }
+
+    .label {
+      margin-left: 0.75rem;
+      opacity: 0;
+      transform: translateX(15px);
+      white-space: nowrap;
+      pointer-events: none;
+      transition: all 0.3s ease;
+    }
+
+    &:hover {
+      background: linear-gradient(
+        135deg,
+        rgba(244, 63, 94, 0.25),
+        rgba(139, 92, 246, 0.25)
+      );
+      box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
+
+      .label {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+
+  .nav-item.active {
+  background: linear-gradient(
+    135deg,
+    rgba(244, 63, 94, 0.25),
+    rgba(139, 92, 246, 0.25)
+  );
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
+}
+}
+
+/* Mobile Bottom Navbar */
+
+@media (max-width: 768px) {
+  * {
+  -webkit-tap-highlight-color: transparent;
+}
+
+  .navbar {
+    height: 5rem;
+    top: auto;
+    bottom: 0.3rem;
+    right: 1rem;
+    left: 1rem;
+    transform: none;
+    flex-direction: row;
+    justify-content: space-around;
+    border-radius: 1.5rem;
+    padding: 0.6rem;
+
+    background: $glass-bg;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid $glass-border;
+
+    .nav-item {
+      justify-content: center;
+      padding: 0.5rem;
+      transition: all 0.3s ease;
+
+      &:active {
+      transform: scale(0.95);
+      }
+
+      .label {
+        display: none;
+      }
+
+      .icon {
+        font-size: 1.8rem;
+      }
+    }
+  }
+}
